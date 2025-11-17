@@ -1,0 +1,11 @@
+<!-- About Section -->
+<section id="about" class="about">
+  <div class="container">
+    <h2 class="section-title">About Us</h2>
+    <div class="about-content">
+      @for (paragraph of aboutParagraphs; track $index) {
+        <p class="about-text">{{ paragraph }}</p>
+      }
+    </div>
+  </div>
+</section>

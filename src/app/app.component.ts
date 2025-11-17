@@ -1,5 +1,12 @@
 import { Component, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HeaderComponent } from './areas/header/header.component';
+import { HeroComponent } from './areas/hero/hero.component';
+import { ServicesComponent } from './areas/services/services.component';
+import { GalleryComponent } from './areas/gallery/gallery.component';
+import { AboutComponent } from './areas/about/about.component';
+import { ContactComponent } from './areas/contact/contact.component';
+import { FooterComponent } from './areas/footer/footer.component';
 
 interface Service {
   icon: string;
@@ -21,7 +28,16 @@ interface GalleryItem {
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    HeaderComponent,
+    HeroComponent,
+    ServicesComponent,
+    GalleryComponent,
+    AboutComponent,
+    ContactComponent,
+    FooterComponent
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -64,8 +80,6 @@ export class AppComponent {
       description: 'Quality tire repair and maintenance'
     }
   ]);
-
-  currentSlide = signal(0);
 
   // Services data using signals
   services = signal<Service[]>([
@@ -218,43 +232,4 @@ export class AppComponent {
     { label: 'Contact', href: '#contact' }
   ]);
 
-  // Menu state
-  isMenuOpen = signal(false);
-
-  // Toggle menu
-  toggleMenu(): void {
-    this.isMenuOpen.update(value => !value);
-  }
-
-  // Close menu
-  closeMenu(): void {
-    this.isMenuOpen.set(false);
-  }
-
-  // Smooth scroll to section
-  scrollToSection(event: Event, sectionId: string): void {
-    event.preventDefault();
-    this.closeMenu(); // Close menu when navigating
-    const element = document.querySelector(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
-
-  // Gallery navigation
-  nextSlide(): void {
-    const current = this.currentSlide();
-    const total = this.galleryItems().length;
-    this.currentSlide.set((current + 1) % total);
-  }
-
-  prevSlide(): void {
-    const current = this.currentSlide();
-    const total = this.galleryItems().length;
-    this.currentSlide.set((current - 1 + total) % total);
-  }
-
-  goToSlide(index: number): void {
-    this.currentSlide.set(index);
-  }
 }

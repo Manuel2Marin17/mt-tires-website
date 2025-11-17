@@ -1,0 +1,24 @@
+<!-- Contact Section -->
+<section id="contact" class="contact">
+  <div class="container">
+    <h2 class="section-title">Come See Us</h2>
+    <p class="section-intro">Got questions? Need service? Just stop by or give us a call. We're here to help.</p>
+
+    <div class="contact-grid">
+      @for (info of contactInfo; track info.title) {
+        <div class="contact-card">
+          <h3>
+            <span class="material-symbols-outlined">{{ info.icon }}</span>
+            {{ info.title }}
+          </h3>
+          @for (detail of info.details; track $index) {
+            <p class="contact-detail">{{ detail }}</p>
+          }
+          @if (info.note) {
+            <p class="contact-note">{{ info.note }}</p>
+          }
+        </div>
+      }
+    </div>
+  </div>
+</section>

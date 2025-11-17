@@ -1,0 +1,18 @@
+/* Footer */
+.footer {
+  background: var(--dark-black, #1a1a1a);
+  color: var(--bg-white, #ffffff);
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+}

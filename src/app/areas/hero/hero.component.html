@@ -1,0 +1,52 @@
+<!-- Hero Section - Split with Tire Theme -->
+<section id="home" class="hero">
+  <div class="hero-split">
+    <!-- Left Side - Logo -->
+    <div class="hero-left">
+      <div class="hero-left-content">
+        <img src="images/main_logo.png" [alt]="businessName" class="hero-logo">
+      </div>
+    </div>
+
+    <!-- Right Side - Content -->
+    <div class="hero-right">
+      <!-- Address with Status -->
+      <div class="hero-address-bar">
+        <!-- Open/Closed Status -->
+        <div class="hero-status" [class.open]="isOpen" [class.closed]="!isOpen">
+          <span class="status-dot"></span>
+          <span class="status-text">{{ isOpen ? 'Open Now' : 'Closed' }}</span>
+        </div>
+
+        <a
+          [href]="businessAddress.googleMapsUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hero-address">
+          <span class="material-symbols-outlined">location_on</span>
+          <div class="address-text">
+            <span>{{ businessAddress.street }}</span>
+            <span>{{ businessAddress.city }}</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="hero-right-content">
+        <h1 class="hero-title">{{ heroTitle }}</h1>
+        <ul class="hero-services-list">
+          @for (service of heroServices; track $index) {
+            <li>{{ service }}</li>
+          }
+        </ul>
+        <div class="cta-wrapper">
+          <a
+            href="#contact"
+            class="cta-button"
+            (click)="scrollToSection($event, '#contact')">
+            Get in Touch
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

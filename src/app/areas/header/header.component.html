@@ -1,0 +1,39 @@
+<!-- Header -->
+<header class="header">
+  <div class="container">
+    <div class="header-content">
+      <h2 class="header-title">{{ businessName }}</h2>
+
+      <!-- Phone Number -->
+      <a href="tel:{{ businessPhone }}" class="header-phone">
+        <span class="material-symbols-outlined">call</span>
+        <span class="phone-number">{{ businessPhone }}</span>
+      </a>
+
+      <!-- Hamburger Button -->
+      <button
+        class="hamburger"
+        (click)="toggleMenu()"
+        aria-label="Toggle menu">
+        <span class="material-symbols-outlined">
+          {{ isMenuOpen() ? 'close' : 'menu' }}
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Backdrop Overlay -->
+  <div class="menu-backdrop" [class.open]="isMenuOpen()" (click)="closeMenu()"></div>
+
+  <!-- Mobile Menu -->
+  <nav class="mobile-nav" [class.open]="isMenuOpen()">
+    @for (item of navItems; track item.href) {
+      <a
+        [href]="item.href"
+        class="nav-link"
+        (click)="scrollToSection($event, item.href)">
+        {{ item.label }}
+      </a>
+    }
+  </nav>
+</header>
