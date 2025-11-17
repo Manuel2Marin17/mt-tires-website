@@ -28,15 +28,15 @@ interface GalleryItem {
 export class AppComponent {
   // Signals for reactive state management
   businessName = signal('MT Tires Service LLC');
-  businessPhone = signal('(555) 123-4567');
+  businessPhone = signal('(512) 787-2924');
   heroTagline = signal('Locally Owned. Neighbor Approved.');
   heroTitle = signal(`What we do!`);
   heroServices = signal([
-    'Service 1',
-    'Service 2',
-    'Service 3',
-    'Service 4',
-    'Service 5'
+    'Alignment and Balancing for Heavy and Light Trucks',
+    'Brake Service and Replacement',
+    'Shock and Strut Replacement',
+    'DOT Inspections (for Commercial Vehicles)',
+    'And more...'
   ]);
   businessAddress = signal({
     street: '15095 Camino Real',
@@ -70,34 +70,84 @@ export class AppComponent {
   // Services data using signals
   services = signal<Service[]>([
     {
-      icon: 'build',
-      title: 'Tire Installation',
-      description: "New tires installed right the first time. We'll help you find the perfect match for your vehicle and budget."
-    },
-    {
-      icon: 'balance',
-      title: 'Wheel Balancing',
-      description: "Smooth ride, no vibrations. We'll balance your wheels so you can enjoy the drive."
-    },
-    {
       icon: 'cached',
-      title: 'Tire Rotation',
-      description: 'Keep your tires wearing evenly and lasting longer with regular rotations.'
+      title: 'Tire Mounting, Rotation, and Balancing',
+      description: 'Montaje, rotación y balanceo de llantas'
     },
     {
       icon: 'handyman',
-      title: 'Flat Tire Repair',
-      description: "Got a flat? We'll patch it up quick so you can get back on the road."
+      title: 'Flat Tire Repair and Patching',
+      description: 'Reparación y parchado de llantas ponchadas'
+    },
+    {
+      icon: 'balance',
+      title: 'Alignment and Balancing for Heavy and Light Trucks',
+      description: 'Alineación y balanceo en trocas pesadas y ligeras'
+    },
+    {
+      icon: 'build',
+      title: 'Tire Service for Commercial Trucks and Cars',
+      description: 'Servicio de llantas para camiones comerciales y carros'
+    },
+    {
+      icon: 'water_drop',
+      title: 'Oil and Filter Changes',
+      description: 'Cambio de aceites y filtros'
+    },
+    {
+      icon: 'stop_circle',
+      title: 'Brake Service and Replacement',
+      description: 'Servicio y reemplazo de frenos. Pads, rotors, drums, shoes, and brake fluid service. Pastillas, discos, tambores, zapatas y cambio de líquido de frenos.'
+    },
+    {
+      icon: 'construction',
+      title: 'General Suspension Repair',
+      description: 'Reparación de suspensión en general. Includes installation of bushings, king pins, springs, brakes, drums, and rotors. Incluye instalación de bujes, king pins, muelles, frenos, tambores y discos.'
     },
     {
       icon: 'bolt',
-      title: 'Tire Alignment',
-      description: 'Proper alignment means better handling and longer tire life. Let us get you squared away.'
+      title: 'Shock and Strut Replacement',
+      description: 'Reemplazo de amortiguadores y struts'
     },
     {
-      icon: 'search',
-      title: 'Tire Inspection',
-      description: "Not sure about your tires? We'll check them out and give you honest advice on what you need."
+      icon: 'navigation',
+      title: 'Steering System Inspection and Repair',
+      description: 'Inspección y reparación del sistema de dirección'
+    },
+    {
+      icon: 'settings',
+      title: 'Wheel Bearing and Hub Service',
+      description: 'Servicio de rodamientos y mazas de ruedas'
+    },
+    {
+      icon: 'tune',
+      title: 'Engine Tune-Ups',
+      description: 'Ajustes y afinación de motor'
+    },
+    {
+      icon: 'sync_alt',
+      title: 'Transmission Service (Fluid and Filter)',
+      description: 'Servicio de transmisión (fluido y filtro)'
+    },
+    {
+      icon: 'drive_eta',
+      title: 'Differential and Driveline Service',
+      description: 'Servicio de diferencial y línea motriz'
+    },
+    {
+      icon: 'verified_user',
+      title: 'DOT Inspections (for Commercial Vehicles)',
+      description: 'Inspecciones DOT (para vehículos comerciales)'
+    },
+    {
+      icon: 'computer',
+      title: 'Computer Diagnostics and Check Engine Light',
+      description: 'Diagnóstico computarizado y revisión de la luz de motor'
+    },
+    {
+      icon: 'home_repair_service',
+      title: 'General Maintenance and Repair',
+      description: 'Mantenimiento y reparación en general'
     }
   ]);
 
@@ -113,7 +163,7 @@ export class AppComponent {
     {
       icon: 'call',
       title: 'Phone',
-      details: ['(555) 123-4567'],
+      details: ['(512) 787-2924'],
       note: 'Call us anytime during business hours'
     },
     {
