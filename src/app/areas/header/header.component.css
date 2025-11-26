@@ -134,6 +134,32 @@
   border-left-color: var(--primary-red);
 }
 
+/* Desktop - evenly space header items */
+@media (min-width: 769px) {
+  .header .container {
+    max-width: 100%;
+    padding: 0 40px;
+  }
+
+  .header-content {
+    justify-content: space-between;
+  }
+
+  .header-title {
+    flex: 1;
+  }
+
+  .header-phone {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .hamburger {
+    flex: 1;
+    justify-content: flex-end;
+  }
+}
+
 /* Media Queries */
 @media (max-width: 768px) {
   .header-title {

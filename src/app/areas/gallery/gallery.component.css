@@ -2,6 +2,7 @@
 .gallery {
   padding: 80px 0;
   background: var(--bg-light, #f9f9f9);
+  scroll-margin-top: 70px;
 }
 
 .container {

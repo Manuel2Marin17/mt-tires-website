@@ -1,5 +1,6 @@
 import { Component, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DateTime } from 'luxon';
 import { HeaderComponent } from './areas/header/header.component';
 import { HeroComponent } from './areas/hero/hero.component';
 import { ServicesComponent } from './areas/services/services.component';
@@ -60,8 +61,8 @@ export class AppComponent {
     googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=15095+Camino+Real,+Kyle,+TX+78640'
   });
   businessHours = signal([
-    'Monday - Friday: 8am - 6pm',
-    'Saturday: 9am - 4pm',
+    'Monday - Friday: 8am - 5pm',
+    'Saturday: 8am - 12pm',
     'Sunday: Closed'
   ]);
 
@@ -189,8 +190,8 @@ export class AppComponent {
       icon: 'schedule',
       title: 'Hours',
       details: [
-        'Monday - Friday: 8am - 6pm',
-        'Saturday: 9am - 4pm',
+        'Monday - Friday: 8am - 5pm',
+        'Saturday: 8am - 12pm',
         'Sunday: Closed'
       ]
     }
@@ -199,25 +200,24 @@ export class AppComponent {
   // Computed signal for current year
   currentYear = computed(() => new Date().getFullYear());
 
-  // Computed signal for open/closed status
+  // Computed signal for open/closed status (uses Central Time)
   isOpen = computed(() => {
-    const now = new Date();
-    const day = now.getDay(); // 0 = Sunday, 6 = Saturday
-    const hours = now.getHours();
-    const minutes = now.getMinutes();
-    const currentTime = hours + minutes / 60;
+    // Get current time in Central Time (America/Chicago)
+    const now = DateTime.now().setZone('America/Chicago');
+    const day = now.weekday; // 1 = Monday, 7 = Sunday (Luxon uses ISO weekday)
+    const currentTime = now.hour + now.minute / 60;
 
-    // Sunday: Closed
-    if (day === 0) return false;
+    // Sunday: Closed (weekday 7)
+    if (day === 7) return false;
 
-    // Monday - Friday: 8am - 6pm
+    // Monday - Friday: 8am - 5pm (weekday 1-5)
     if (day >= 1 && day <= 5) {
-      return currentTime >= 8 && currentTime < 18;
+      return currentTime >= 8 && currentTime < 17;
     }
 
-    // Saturday: 9am - 4pm
+    // Saturday: 8am - 12pm (weekday 6)
     if (day === 6) {
-      return currentTime >= 9 && currentTime < 16;
+      return currentTime >= 8 && currentTime < 12;
     }
 
     return false;

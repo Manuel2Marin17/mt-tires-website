@@ -2,6 +2,7 @@
 .contact {
   padding: 80px 0;
   background: var(--bg-white, #ffffff);
+  scroll-margin-top: 70px;
 }
 
 .container {
